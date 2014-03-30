@@ -20,21 +20,21 @@
 package main.java.au.com.telegraphics.data;
 
 public class Demo {
-	
-	class MyPair extends Pair<Integer,Double> {
-		public MyPair(Integer a, Double b) {
-			super(a, b);
-		}
-	}
-	
-	class MyKey<T> extends Pair<String,T> {
-		public MyKey(String a, T b) {
-			super(a, b);
-		}
-	}
+   
+   class MyPair extends Pair<Integer,Double> {
+      public MyPair(Integer a, Double b) {
+         super(a, b);
+      }
+   }
+   
+   class MyKey<T> extends Pair<String,T> {
+      public MyKey(String a, T b) {
+         super(a, b);
+      }
+   }
 
-	public static void main(String[] args) {
-		Pair<Integer,String> p = new Pair<Integer,String>(5, "a");
-	}
+   public static void main(String[] args) {
+      Pair<Integer,String> p = new Pair<Integer,String>(5, "a");
+   }
 
 }

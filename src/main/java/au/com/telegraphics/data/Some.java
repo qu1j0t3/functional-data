@@ -22,50 +22,49 @@ package main.java.au.com.telegraphics.data;
 import com.google.common.base.Function;
 
 public final class Some<T> extends Option<T> {
-	
-	protected final T value;
-	
-	public Some(T v) {
-		this.value = v;
-	}
+   
+   protected final T value;
+   
+   public Some(T v) {
+      this.value = v;
+   }
 
-	@Override
-	public T getOrElse(T defaultValue) {
-		return value;
-	}
+   @Override
+   public T getOrElse(T defaultValue) {
+      return value;
+   }
 
-	@Override
-	public boolean isEmpty() {
-		return false;
-	}
+   @Override
+   public boolean isEmpty() {
+      return false;
+   }
 
-	@Override
-	public boolean exists(T value) {
-		return this.value.equals(value);
-	}
+   @Override
+   public boolean exists(T value) {
+      return this.value.equals(value);
+   }
 
-	@Override
-	public Option<T> orElse(Option<T> opt) {
-		return this;
-	}
+   @Override
+   public Option<T> orElse(Option<T> opt) {
+      return this;
+   }
 
-	@Override
-	public <U> Option<U> map(Function<T, U> f) {
-		return new Some<U>(f.apply(value));
-	}
-	
-	@Override
-	public boolean equals(Object that) {
-		return that instanceof Some && ((Some)that).value.equals(value);
-	}
-	
-	@Override
-	public int hashCode() {
-		return value.hashCode();
-	}
-	
-	@Override
-	public String toString() {
-		return "Some(" + value + ")";
-	}
+   public <U> Option<U> map(Function<T, U> f) {
+      return new Some<U>(f.apply(value));
+   }
+   
+   @Override
+   public boolean equals(Object that) {
+      return that instanceof Some && ((Some)that).value.equals(value);
+   }
+   
+   @Override
+   public int hashCode() {
+      return value.hashCode();
+   }
+   
+   @Override
+   public String toString() {
+      return "Some(" + value + ")";
+   }
 }

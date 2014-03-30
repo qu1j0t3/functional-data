@@ -24,68 +24,68 @@ import java.util.List;
 
 public class TreeNil<T extends Comparable<T>> extends OrderedBinaryTree<T> {
 
-	@Override
-	public TreeNode<T> insert(T v) {
-		return tree(new TreeNil<T>(), v, new TreeNil<T>());
-	}
+   @Override
+   public TreeNode<T> insert(T v) {
+      return tree(new TreeNil<T>(), v, new TreeNil<T>());
+   }
 
-	@Override
-	public Option<OrderedBinaryTree<T>> remove(T v) {
-		return Option.none();
-	}
-	
-	@Override
-	public Option<T> min() {
-		return Option.none();
-	}
-	
-	@Override
-	public Option<T> max() {
-		return Option.none();
-	}
+   @Override
+   public Option<OrderedBinaryTree<T>> remove(T v) {
+      return Option.none();
+   }
+   
+   @Override
+   public Option<T> min() {
+      return Option.none();
+   }
+   
+   @Override
+   public Option<T> max() {
+      return Option.none();
+   }
 
-	@Override
-	public boolean isEmpty() {
-		return true;
-	}
+   @Override
+   public boolean isEmpty() {
+      return true;
+   }
 
-	@Override
-	public Option<TreeAndValue> removeMax() {
-		return Option.none();
-	}
+   @Override
+   public Option<TreeAndValue> removeMax() {
+      return Option.none();
+   }
 
-	@Override
-	public Option<TreeAndValue> removeMin() {
-		return Option.none();
-	}
+   @Override
+   public Option<TreeAndValue> removeMin() {
+      return Option.none();
+   }
 
-	@Override
-	public int size() {
-		return 0;
-	}
+   @Override
+   public int size() {
+      return 0;
+   }
 
-	@Override
-	public int depth() {
-		return 0;
-	}
+   @Override
+   public int depth() {
+      return 0;
+   }
 
-	@Override
-	public List<T> inOrder() {
-		return new LinkedList<T>();
-	}
+   @Override
+   public List<T> inOrder() {
+      return new LinkedList<T>();
+   }
 
-	@Override
-	protected String toString(int depth) {
-		return toString();
-	}
+   @Override
+   protected String toString(int depth) {
+      return toString();
+   }
 
-	@Override
-	public String toString() {
-		return "()";
-	}
+   @Override
+   public String toString() {
+      return "()";
+   }
 
-	@Override
-	public boolean contains(T v) {
-		return false;
-	}
+   @Override
+   public boolean contains(T v) {
+      return false;
+   }
 }

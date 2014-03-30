@@ -20,11 +20,11 @@
 package main.java.au.com.telegraphics.data;
 
 public class PairSame<T> {
-	public final T l;
-	public final T r;
+   public final T l;
+   public final T r;
 
-	public PairSame(T t, T u) {
-		this.l = t;
-		this.r = u;
-	}
+   public PairSame(T t, T u) {
+      this.l = t;
+      this.r = u;
+   }
 }

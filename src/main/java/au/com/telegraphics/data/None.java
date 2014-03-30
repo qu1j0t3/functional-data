@@ -23,39 +23,38 @@ import com.google.common.base.Function;
 
 public final class None<T> extends Option<T> {
 
-	@Override
-	public T getOrElse(T defaultValue) {
-		return defaultValue;
-	}
+   @Override
+   public T getOrElse(T defaultValue) {
+      return defaultValue;
+   }
 
-	@Override
-	public boolean isEmpty() {
-		return true;
-	}
+   @Override
+   public boolean isEmpty() {
+      return true;
+   }
 
-	@Override
-	public boolean exists(T value) {
-		return false;
-	}
+   @Override
+   public boolean exists(T value) {
+      return false;
+   }
 
-	@Override
-	public Option<T> orElse(Option<T> opt) {
-		return opt;
-	}
+   @Override
+   public Option<T> orElse(Option<T> opt) {
+      return opt;
+   }
 
-	@Override
-	public <U> Option<U> map(Function<T, U> f) {
-		return new None<U>();
-	}
-	
-	@Override
-	public boolean equals(Object that) {
-		return that instanceof None;
-	}
-	
-	@Override
-	public String toString() {
-		return "None";
-	}
+   public <U> Option<U> map(Function<T, U> f) {
+      return new None<U>();
+   }
+   
+   @Override
+   public boolean equals(Object that) {
+      return that instanceof None;
+   }
+   
+   @Override
+   public String toString() {
+      return "None";
+   }
 
 }

@@ -20,13 +20,13 @@
 package main.java.au.com.telegraphics.data;
 
 public class Pair<T,U> {
-	public final T l;
-	public final U r;
+   public final T l;
+   public final U r;
 
-	public Pair(T t, U u) {
-		this.l = t;
-		this.r = u;
-	}
+   public Pair(T t, U u) {
+      this.l = t;
+      this.r = u;
+   }
 
     @Override
     public String toString() {

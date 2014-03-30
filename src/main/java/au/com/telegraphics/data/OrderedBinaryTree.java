@@ -22,37 +22,37 @@ package main.java.au.com.telegraphics.data;
 import java.util.List;
 
 public abstract class OrderedBinaryTree<T extends Comparable<T>> {
-	
-	public static <U extends Comparable<U>> OrderedBinaryTree<U> empty() {
-		return new TreeNil<U>();
-	}
+   
+   public static <U extends Comparable<U>> OrderedBinaryTree<U> empty() {
+      return new TreeNil<U>();
+   }
 
-	public class TreeAndValue extends Pair<OrderedBinaryTree<T>,T> {
-		public TreeAndValue(OrderedBinaryTree<T> t, T u) {
-			super(t, u);
-		}
-	}
-	
-	abstract public TreeNode<T> insert(T v);
+   public class TreeAndValue extends Pair<OrderedBinaryTree<T>,T> {
+      public TreeAndValue(OrderedBinaryTree<T> t, T u) {
+         super(t, u);
+      }
+   }
+   
+   abstract public TreeNode<T> insert(T v);
 
-	/**
-	 * @return Some if an element was removed from the tree; otherwise None
-	 */
-	abstract public Option<OrderedBinaryTree<T>> remove(T v);
-	abstract public Option<TreeAndValue> removeMax();
-	abstract public Option<TreeAndValue> removeMin();
+   /**
+    * @return Some if an element was removed from the tree; otherwise None
+    */
+   abstract public Option<OrderedBinaryTree<T>> remove(T v);
+   abstract public Option<TreeAndValue> removeMax();
+   abstract public Option<TreeAndValue> removeMin();
 
-	abstract public Option<T> max();
-	abstract public Option<T> min();
-	abstract public boolean isEmpty();
-	abstract public int size();
-	abstract public int depth();
-	abstract public List<T> inOrder();
-	abstract public boolean contains(T v);
-	
-	abstract protected String toString(int depth);
-	
-	protected TreeNode<T> tree(OrderedBinaryTree<T> l, T v, OrderedBinaryTree<T> r) {
-		return new TreeNode<T>(l, v, r);
-	}
+   abstract public Option<T> max();
+   abstract public Option<T> min();
+   abstract public boolean isEmpty();
+   abstract public int size();
+   abstract public int depth();
+   abstract public List<T> inOrder();
+   abstract public boolean contains(T v);
+   
+   abstract protected String toString(int depth);
+   
+   protected TreeNode<T> tree(OrderedBinaryTree<T> l, T v, OrderedBinaryTree<T> r) {
+      return new TreeNode<T>(l, v, r);
+   }
 }
