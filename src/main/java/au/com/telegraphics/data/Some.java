@@ -66,6 +66,6 @@ public final class Some<T> extends Option<T> {
 	
 	@Override
 	public String toString() {
-		return "Some(" + value.toString() + ")";
+		return "Some(" + value + ")";
 	}
 }

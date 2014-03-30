@@ -154,9 +154,9 @@ public class TreeNode<T extends Comparable<T>> extends OrderedBinaryTree<T> {
 
 	@Override
 	protected String toString(int depth) {
-		return depth > 0 ? "<"+left.toString(depth-1)+","
-				              +value.toString()+","
-				              +right.toString(depth-1)+">"
+		return depth > 0 ? "<" + left.toString(depth-1) + ","
+				               + value + ","
+				               + right.toString(depth-1) + ">"
 				         : "...";
 	}
 	
