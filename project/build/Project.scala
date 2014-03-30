@@ -11,8 +11,6 @@ class Project(info: ProjectInfo) extends DefaultProject(info) {
   
   val scalacheck = "org.scala-tools.testing" % "scalacheck" % "1.6" % "test"
 
-  override def testJavaSourcePath = "test-src"
-
   override def libraryDependencies = Set(
     //"commons-collections" % "commons-collections" % "3.2.1",
     //"io.argonaut" %% "argonaut" % "6.0.2",
