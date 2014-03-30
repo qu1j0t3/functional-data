@@ -27,4 +27,25 @@ public class Pair<T,U> {
 		this.l = t;
 		this.r = u;
 	}
+
+    @Override
+    public String toString() {
+        return "(" + l + "," + r + ")";
+    }
+
+    @Override
+    public boolean equals(Object that) {
+        if(!(that instanceof Pair))
+            return false;
+        Pair p = (Pair)that;
+        // won't handle nulls
+        return l.equals(p.l) && r.equals(p.r);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31*result + l.hashCode();
+        return 31*result + r.hashCode();
+    }
 }

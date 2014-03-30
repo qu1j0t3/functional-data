@@ -117,10 +117,10 @@ public class TestTree extends TestCase {
 	public void testRemoveMin() {
 		OrderedBinaryTree<Integer> t = randomTree(10);
 
-		Option<OrderedBinaryTree<Integer>.TreeAndNode> u = t.removeMin();
+		Option<OrderedBinaryTree<Integer>.TreeAndValue> u = t.removeMin();
 		
 		OrderedBinaryTree<Integer> newTree = u.getOrElse(null).l;
-		int removedValue = u.getOrElse(null).r.value;
+		int removedValue = u.getOrElse(null).r;
 
 		assertEquals(9, newTree.size());
 		assertEquals(1, removedValue);
@@ -132,10 +132,10 @@ public class TestTree extends TestCase {
 	public void testRemoveMax() {
 		OrderedBinaryTree<Integer> t = randomTree(10);
 
-		Option<OrderedBinaryTree<Integer>.TreeAndNode> u = t.removeMax();
+		Option<OrderedBinaryTree<Integer>.TreeAndValue> u = t.removeMax();
 		
 		OrderedBinaryTree<Integer> newTree = u.getOrElse(null).l;
-		int removedValue = u.getOrElse(null).r.value;
+		int removedValue = u.getOrElse(null).r;
 
 		assertEquals(9, newTree.size());
 		assertEquals(10, removedValue);

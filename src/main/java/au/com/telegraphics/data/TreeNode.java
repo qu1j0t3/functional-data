@@ -82,9 +82,9 @@ public class TreeNode<T extends Comparable<T>> extends OrderedBinaryTree<T> {
 				return Option.some(left);
 			} else {
 				return left.removeMax().map(
-						new Function<TreeAndNode,OrderedBinaryTree<T>>() {
-							public OrderedBinaryTree<T> apply(TreeAndNode tn) {
-								return tree(tn.l, tn.r.value, right);
+						new Function<TreeAndValue,OrderedBinaryTree<T>>() {
+							public OrderedBinaryTree<T> apply(TreeAndValue tn) {
+								return tree(tn.l, tn.r, right);
 							}
 						} ).orElse(Option.some(right));
 			}
@@ -117,28 +117,28 @@ public class TreeNode<T extends Comparable<T>> extends OrderedBinaryTree<T> {
 	}
 
 	@Override
-	public Option<TreeAndNode> removeMax() {
+	public Option<TreeAndValue> removeMax() {
 		if(right.isEmpty()) {
-			return new Some<TreeAndNode>(new TreeAndNode(left, this));
+			return Option.some(new TreeAndValue(left, value));
 		} else {
 			return right.removeMax().map(
-					new Function<TreeAndNode,TreeAndNode>() {
-						public TreeAndNode apply(TreeAndNode tn) {
-							return new TreeAndNode(tree(left, value, tn.l), tn.r);
+					new Function<TreeAndValue, TreeAndValue>() {
+						public TreeAndValue apply(TreeAndValue tn) {
+							return new TreeAndValue(tree(left, value, tn.l), tn.r);
 						}
 					} );
 		}
 	}
 
 	@Override
-	public Option<TreeAndNode> removeMin() {
+	public Option<TreeAndValue> removeMin() {
 		if(left.isEmpty()) {
-			return new Some<TreeAndNode>(new TreeAndNode(right, this));
+			return Option.some(new TreeAndValue(right, value));
 		} else {
 			return left.removeMin().map(
-					new Function<TreeAndNode,TreeAndNode>() {
-						public TreeAndNode apply(TreeAndNode tn) {
-							return new TreeAndNode(tree(tn.l, value, right), tn.r);
+					new Function<TreeAndValue, TreeAndValue>() {
+						public TreeAndValue apply(TreeAndValue tn) {
+							return new TreeAndValue(tree(tn.l, value, right), tn.r);
 						}
 					} );
 		}
@@ -154,8 +154,8 @@ public class TreeNode<T extends Comparable<T>> extends OrderedBinaryTree<T> {
 
 	@Override
 	protected String toString(int depth) {
-		return depth > 0 ? "<" + left.toString(depth-1) + ","
-				               + value + ","
+		return depth > 0 ? "<" + left.toString(depth-1) + ":"
+				               + value + ":"
 				               + right.toString(depth-1) + ">"
 				         : "...";
 	}

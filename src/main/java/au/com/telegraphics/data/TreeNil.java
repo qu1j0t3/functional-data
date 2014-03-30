@@ -50,12 +50,12 @@ public class TreeNil<T extends Comparable<T>> extends OrderedBinaryTree<T> {
 	}
 
 	@Override
-	public Option<TreeAndNode> removeMax() {
+	public Option<TreeAndValue> removeMax() {
 		return Option.none();
 	}
 
 	@Override
-	public Option<TreeAndNode> removeMin() {
+	public Option<TreeAndValue> removeMin() {
 		return Option.none();
 	}
 

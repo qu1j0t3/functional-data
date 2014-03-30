@@ -27,8 +27,8 @@ public abstract class OrderedBinaryTree<T extends Comparable<T>> {
 		return new TreeNil<U>();
 	}
 
-	public class TreeAndNode extends Pair<OrderedBinaryTree<T>,TreeNode<T>> {
-		public TreeAndNode(OrderedBinaryTree<T> t, TreeNode<T> u) {
+	public class TreeAndValue extends Pair<OrderedBinaryTree<T>,T> {
+		public TreeAndValue(OrderedBinaryTree<T> t, T u) {
 			super(t, u);
 		}
 	}
@@ -39,8 +39,8 @@ public abstract class OrderedBinaryTree<T extends Comparable<T>> {
 	 * @return Some if an element was removed from the tree; otherwise None
 	 */
 	abstract public Option<OrderedBinaryTree<T>> remove(T v);
-	abstract public Option<TreeAndNode> removeMax();
-	abstract public Option<TreeAndNode> removeMin();
+	abstract public Option<TreeAndValue> removeMax();
+	abstract public Option<TreeAndValue> removeMin();
 
 	abstract public Option<T> max();
 	abstract public Option<T> min();
