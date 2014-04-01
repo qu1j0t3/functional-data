@@ -19,6 +19,8 @@
 
 package main.java.au.com.telegraphics.data;
 
+import com.google.common.base.Function;
+
 public abstract class Option<T> implements Functor<T> {
 
    public static <U> Option<U> some(U v) {
@@ -33,4 +35,5 @@ public abstract class Option<T> implements Functor<T> {
    abstract public Option<T> orElse(Option<T> opt);
    abstract public boolean isEmpty();
    abstract public boolean exists(T value);
+   abstract public <U> Option<U> map(Function<T,U> f);
 }

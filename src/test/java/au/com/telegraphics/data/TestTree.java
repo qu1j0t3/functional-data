@@ -24,18 +24,24 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
+import com.google.common.base.Function;
+
 import junit.framework.TestCase;
 
 import main.java.au.com.telegraphics.data.*;
 
 public class TestTree extends TestCase {
-   
-   protected static ArrayList<Integer> oneUpTo(int n) {
-      ArrayList<Integer> list = new ArrayList<Integer>(n);
-      for(int i = 1; i <= n; ++i) {
+
+   protected static ArrayList<Integer> range(int from, int to) {
+      ArrayList<Integer> list = new ArrayList<Integer>(to-from+1);
+      for(int i = from; i <= to; ++i) {
          list.add(i);
       }
       return list;
+   }
+
+   protected static ArrayList<Integer> oneUpTo(int n) {
+      return range(1, n);
    }
    
    protected static List<Integer> randomPerm(int n) {
@@ -182,5 +188,27 @@ public class TestTree extends TestCase {
       Option<OrderedBinaryTree<Integer>> optTree = t.remove(50);
       
       assertTrue(optTree.isEmpty());
+   }
+   
+   public void testInOrder() {
+      OrderedBinaryTree<Integer> t = randomTree(10);
+
+      assertEquals(oneUpTo(10), t.inOrder());
+   }
+   
+   public void testBetween() {
+      OrderedBinaryTree<Integer> t = randomTree(10);
+
+      assertEquals(range(3, 7), t.between(3, 7));
+   }
+   
+   protected static Function<Integer,Integer> addOne = new Function<Integer,Integer>() {
+      public Integer apply(Integer x) { return x+1; }
+   };
+   
+   public void testMap() {
+      OrderedBinaryTree<Integer> t = randomTree(10);
+
+      assertEquals(range(2, 11), t.map(addOne).inOrder());
    }
 }

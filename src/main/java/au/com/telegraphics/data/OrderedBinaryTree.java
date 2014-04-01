@@ -21,10 +21,16 @@ package main.java.au.com.telegraphics.data;
 
 import java.util.List;
 
+import com.google.common.base.Function;
+
 public abstract class OrderedBinaryTree<T extends Comparable<T>> {
    
    public static <U extends Comparable<U>> OrderedBinaryTree<U> empty() {
       return new TreeNil<U>();
+   }
+   
+   protected static <U extends Comparable<U>> TreeNode<U> tree(OrderedBinaryTree<U> l, U v, OrderedBinaryTree<U> r) {
+      return new TreeNode<U>(l, v, r);
    }
 
    public class TreeAndValue extends Pair<OrderedBinaryTree<T>,T> {
@@ -48,11 +54,9 @@ public abstract class OrderedBinaryTree<T extends Comparable<T>> {
    abstract public int size();
    abstract public int depth();
    abstract public List<T> inOrder();
+   abstract public List<T> between(T min, T max);
    abstract public boolean contains(T v);
+   abstract public <U extends Comparable<U>> OrderedBinaryTree<U> map(Function<T,U> f);
    
    abstract protected String toString(int depth);
-   
-   protected TreeNode<T> tree(OrderedBinaryTree<T> l, T v, OrderedBinaryTree<T> r) {
-      return new TreeNode<T>(l, v, r);
-   }
 }

@@ -22,6 +22,8 @@ package main.java.au.com.telegraphics.data;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.google.common.base.Function;
+
 public class TreeNil<T extends Comparable<T>> extends OrderedBinaryTree<T> {
 
    @Override
@@ -75,6 +77,11 @@ public class TreeNil<T extends Comparable<T>> extends OrderedBinaryTree<T> {
    }
 
    @Override
+   public List<T> between(T min, T max) {
+      return new LinkedList<T>();
+   }
+
+   @Override
    protected String toString(int depth) {
       return toString();
    }
@@ -87,5 +94,10 @@ public class TreeNil<T extends Comparable<T>> extends OrderedBinaryTree<T> {
    @Override
    public boolean contains(T v) {
       return false;
+   }
+
+   @Override
+   public <U extends Comparable<U>> OrderedBinaryTree<U> map(Function<T,U> f) {
+      return empty();
    }
 }

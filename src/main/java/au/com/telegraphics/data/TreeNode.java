@@ -19,6 +19,7 @@
 
 package main.java.au.com.telegraphics.data;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import com.google.common.base.Function;
@@ -153,15 +154,47 @@ public class TreeNode<T extends Comparable<T>> extends OrderedBinaryTree<T> {
    }
 
    @Override
+   public List<T> between(T min, T max) {
+      List<T> elements;
+
+      int minCv = min.compareTo(value);
+      int vCmax = value.compareTo(max);
+
+      if(minCv <= 0) {
+         elements = left.between(min, max);
+      } else {
+         elements = new LinkedList<T>();
+      }
+
+      if(minCv <= 0 && vCmax <= 0) {
+         elements.add(value);
+      }
+
+      if(vCmax <= 0) {
+         elements.addAll(right.between(min, max));
+      }
+
+      return elements;
+   }
+
+   @Override
    protected String toString(int depth) {
-      return depth > 0 ? "<" + left.toString(depth-1) + ":"
-                           + value + ":"
-                           + right.toString(depth-1) + ">"
-                     : "...";
+      return depth > 0 ? "<" + left.toString(depth-1)
+                             + ":" + value + ":"
+                             + right.toString(depth-1) + ">"
+                       : "...";
    }
    
    @Override
    public String toString() {
       return toString(3);
+   }
+
+   /* Note that map() can produce a tree that violates
+    * the ordering invariant, without warning.
+    */
+   @Override
+   public <U extends Comparable<U>> OrderedBinaryTree<U> map(Function<T,U> f) {
+      return tree(left.map(f), f.apply(value), right.map(f));
    }
 }
