@@ -43,7 +43,7 @@ class OptionSpec extends Specification {
           override def apply(d:Int) = d*10
         } ).getOrElse(0) must beEqualTo(60)
     }
-    "deliver themselves" in {
+    "deliver itself via orElse" in {
       Option.some(3).orElse(Option.some(99)) must
               beEqualTo(Option.some(3))
     }
@@ -68,7 +68,7 @@ class OptionSpec extends Specification {
     "produce a default value" in {
       Option.none[Int].getOrElse(99) must beEqualTo(99)
     }
-    "deliver the alternative" in {
+    "deliver the alternative via orElse" in {
       Option.none[Int].orElse(Option.some(99)) must
               beEqualTo(Option.some(99))
     }

@@ -202,9 +202,10 @@ public class TestTree extends TestCase {
       assertEquals(range(3, 7), t.between(3, 7));
    }
    
-   protected static Function<Integer,Integer> addOne = new Function<Integer,Integer>() {
-      public Integer apply(Integer x) { return x+1; }
-   };
+   protected static Function<Integer,Integer> addOne =
+      new Function<Integer,Integer>() {
+         public Integer apply(Integer x) { return x+1; }
+      };
    
    public void testMap() {
       OrderedBinaryTree<Integer> t = randomTree(10);
